@@ -98,7 +98,8 @@ input[type="password"] {
 
 button[type="submit"] {
   width: 120px;
-  height: 32px;
+  height: fit-content;
+  padding: 5px;
   border: none;
   border-radius: var(--border-radius);
   background-color: var(--primary-color);
@@ -139,7 +140,7 @@ button[type="submit"]:hover {
 /* The Close Button */
 .close {
   color: var(--modal-border-color);
-  float: right;
+  float: left;
   font-size: 28px;
   font-weight: bold;
 }
