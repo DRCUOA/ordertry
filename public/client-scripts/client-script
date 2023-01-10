@@ -1,0 +1,7 @@
+document.getElementById('register-button').addEventListener('click', function() {
+  document.getElementById('register-modal').style.display = 'block';
+});
+
+document.getElementById('sign-in-button').addEventListener('click', function() {
+  document.getElementById('sign-in-modal').style.display = 'block';
+});

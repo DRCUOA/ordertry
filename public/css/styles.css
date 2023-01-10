@@ -1,0 +1,170 @@
+:root {
+  --primary-color: #4CAF50;
+  --secondary-color: #FFEB3B;
+  --text-color: #222;
+  --text-font: sans-serif;
+  --text-size: 16px;
+  --border-radius: 4px;
+  --box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  --modal-bg-color: white;
+  --modal-border-color: #ccc;
+}
+
+/* general element styling */
+
+a {
+  color: var(--primary-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--secondary-color);
+  font-family: var(--text-font);
+}
+
+p, li {
+  color: var(--text-color);
+  font-size: var(--text-size);
+  font-family: var(--text-font);
+}
+
+button {
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+/* login form */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  font-size: var(--text-size);
+  margin-bottom: 4px;
+  color: var(--text-color);
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 300px;
+  height: 32px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  font-size: var(--text-size);
+  margin-bottom: 8px;
+}
+
+button[type="submit"] {
+  width: 120px;
+  height: 32px;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-color);
+  color: white;
+  font-size: var(--text-size);
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* new account form */
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  font-size: var(--text-size);
+  margin-bottom: 4px;
+  color: var(--text-color);
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 300px;
+  height: 32px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  font-size: var(--text-size);
+  margin-bottom: 8px;
+}
+
+button[type="submit"] {
+  width: 120px;
+  height: 32px;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-color);
+  color: white;
+  font-size: var(--text-size);
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Modals */
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: var(--modal-bg-color); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: var(--modal-bg-color);
+  margin: auto;
+  padding: 20px;
+  border: 1px solid var(--modal-border-color);
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: var(--modal-border-color);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+

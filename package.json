@@ -1,0 +1,28 @@
+{
+  "name": "super-succotash",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "DEBUG=devLog* nodemon app.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DRCUOA/super-succotash.git"
+  },
+  "author": "Richard Clark",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DRCUOA/super-succotash/issues"
+  },
+  "homepage": "https://github.com/DRCUOA/super-succotash#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "debug": "^4.3.4",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "handlebars": "^4.7.7",
+    "morgan": "^1.10.0",
+    "sqlite3": "^5.1.4"
+  }
+}
