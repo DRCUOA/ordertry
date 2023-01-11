@@ -1,12 +1,38 @@
 :root {
-  --primary-color: #4CAF50;
-  --secondary-color: #FFEB3B;
-  --text-color: #222;
-  --text-font: sans-serif;
-  --text-size: 16px;
-  --border-radius: 4px;
-  --box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  --modal-bg-color: white;
+  /* Color Palette */
+    --primary-color: #000000;
+    --secondary-color: #5F6368;
+    --light-color: #656365;
+    --dark-color: #777878;
+    --danger-color: #ff3333;
+    --success-color: #d5d5d5;
+    --warning-color: #cfcfcf;
+    --info-color: #F3F3F3;
+
+  /* Fonts */
+  --primary-font: "Open Sans", sans-serif;
+  --secondary-font: "Montserrat", sans-serif;
+
+  /* Text size */
+  --base-text-size: 16px;
+
+  /* Spacing */
+  --base-spacing: 16px;
+  --xs-spacing: 8px;
+  --sm-spacing: 16px;
+  --md-spacing: 24px;
+  --lg-spacing: 32px;
+  --xl-spacing: 40px;
+
+  /* Radius */
+  --base-radius: 4px;
+
+  /* Shadows */
+  --base-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  --lg-box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
+
+  /* Modals */
+  --modal-bg-color: rgb(190, 190, 190);
   --modal-border-color: #ccc;
 }
 
@@ -16,63 +42,65 @@ a {
   color: var(--primary-color);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: var(--secondary-color);
-  font-family: var(--text-font);
+
+/* general element styling */
+
+a {
+    color: var(--primary-color);
+}
+
+h1, h2, h3, h4, h5, h6, button {
+  color: var(--info-color);
+  font-family: var(--primary-font);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: var(--base-spacing);
 }
 
 p, li {
-  color: var(--text-color);
-  font-size: var(--text-size);
-  font-family: var(--text-font);
+  color: var(--dark-color);
+  font-size: var(--base-text-size);
+  font-family: var(--primary-font);
+  line-height: 1.5;
+  margin-bottom: var(--base-spacing);
 }
 
+/* Buttons */
 button {
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
+  border-radius: var(--base-radius);
+  box-shadow: var(--base-box-shadow);
+  font-size: var(--base-text-size);
+  padding: var(--base-spacing);
+  font-family: var(--primary-font);
+  transition: all 0.2s ease-in-out;
 }
 
-/* login form */
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-label {
-  font-size: var(--text-size);
-  margin-bottom: 4px;
-  color: var(--text-color);
-}
-
-input[type="email"],
-input[type="password"] {
-  width: 300px;
-  height: 32px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: var(--border-radius);
-  font-size: var(--text-size);
-  margin-bottom: 8px;
-}
-
-button[type="submit"] {
-  width: 120px;
-  height: 32px;
-  border: none;
-  border-radius: var(--border-radius);
+button.primary {
   background-color: var(--primary-color);
-  color: white;
-  font-size: var(--text-size);
-  cursor: pointer;
+  color: #fff;
 }
 
-button[type="submit"]:hover {
-  background-color: #45a049;
+button.danger {
+  background-color: var(--danger-color);
+  color: #fff;
 }
 
-/* new account form */
+button.success {
+  background-color: var(--success-color);
+  color: #fff;
+}
 
+button.warning {
+  background-color: var(--warning-color);
+  color: #fff;
+}
+
+button.info {
+  background-color: var(--info-color);
+  color: #fff;
+}
+
+/* Form */
 form {
   display: flex;
   flex-direction: column;
@@ -80,36 +108,50 @@ form {
 }
 
 label {
-  font-size: var(--text-size);
-  margin-bottom: 4px;
-  color: var(--text-color);
+  font-size: var(--base-text-size);
+  margin-bottom: var(--xs-spacing);
+  color: var(--dark-color);
+  font-family: var(--primary-font);
+  font-weight: 400;
 }
 
 input[type="email"],
-input[type="password"] {
-  width: 300px;
-  height: 32px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: var(--border-radius);
-  font-size: var(--text-size);
-  margin-bottom: 8px;
+input[type="password"],
+input[type="text"] {
+  width: calc(100%/1.3);
+  height: 20px;
+  padding: var(--base-spacing);
+  border: 1px solid var(--light-color);
+  border-radius: var(--base-radius);
+  font-size: var(--base-text-size);
+  font-family: var(--primary-font);
+  margin-bottom: var(--base-spacing);
+  transition: all 0.2s ease-in-out;
+}
+
+input:focus {
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-color);
 }
 
 button[type="submit"] {
   width: 120px;
   height: fit-content;
-  padding: 5px;
+  padding: var(--base-spacing);
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: var(--base-radius);
   background-color: var(--primary-color);
   color: white;
-  font-size: var(--text-size);
+  font-size: var(--base-text-size);
+  font-family: var(--primary-font);
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 button[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: var(--warning-color);
 }
 
 /* Modals */
@@ -132,40 +174,70 @@ button[type="submit"]:hover {
 .modal-content {
   background-color: var(--modal-bg-color);
   margin: auto;
-  padding: 20px;
+  padding: var(--xs-spacing);
   border: 1px solid var(--modal-border-color);
-  width: 80%;
+  border-radius: var(--base-radius);
+  width: calc(100%/1.1);
 }
 
-/* The Close Button */
-.close {
-  color: var(--modal-border-color);
-  float: left;
-  font-size: 28px;
-  font-weight: bold;
+/* page specifics */
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--info-color);
+  background-image: url("../assets/logo-nb-nt-smiley-200.webp");
+  background-position: center 150px;
+  background-repeat: no-repeat;
 }
 
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+.main .btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
-/* Add Zoom Animation */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
-
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
+.main button {
+  background-color: var(--secondary-color);
+  padding: 10px 20px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /***************************************
+ *
+ *      Responsive design
+ *
+ **********/ 
+
+
+
+/* Responsive design */
+
+@media (max-width: 768px) {
+  /* Mobile styles */
+}

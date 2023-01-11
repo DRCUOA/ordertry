@@ -1,6 +1,7 @@
-<!-- new-account -->
-<form method="post" action="/users">
+<!-- new-account html form-->
+<form id="newaccount" method="post" action="./new-account">
   <span class="close" id="reg-close">&times;</span>
+  <br>
   <label for="email">Email:</label>
   <input type="email" name="email" required>
   <br>
@@ -9,6 +10,12 @@
   <br>
   <label for="password-confirm">Confirm Password:</label>
   <input type="password" name="password-confirm" required>
+  <br>
+  <label for="username">Pick a username</label>
+  <input type="text" name="username" required>
+  <br>
+  <label for="realname">Your real name</label>
+  <input type="text" name="realname" required>
   <br>
   <button type="submit">Create Account</button>
 </form>

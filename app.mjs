@@ -4,7 +4,7 @@ import exhbs from 'express-handlebars';
 import morgan from 'morgan';
 import debug from 'debug';
 import cookieParser from 'cookie-parser';
-import { verifyAuth } from './controllers/auth.mjs';
+import { verifyAuth } from './controllers/auth.js';
 import { fileURLToPath } from 'url';
 import usersRoutes from './routes/users.mjs'
 

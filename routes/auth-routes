@@ -1,0 +1,49 @@
+const { v4 : uuid } = require('uuid');
+const bcrypt = require('bcrypt');
+const express = require('express');
+const router = express.Router();
+
+const debug = require('debug');
+
+// debug namespaces
+const devAuthRLog = debug('devLog:authRLog');
+
+const userDao = require('../models/users');
+
+router.post("/new-account", async (req, res) => {
+
+
+    devAuthRLog("Received a request to the '/new-account' route");
+    res.clearCookie("authToken");
+
+    const saltRounds = 10;
+    const password = req.body.password;
+
+    bcrypt.genSalt(saltRounds, (err, salt) => {
+        // returns salt
+        bcrypt.hash(password, salt, async (err, hash) => {
+            // returns hash with salt
+
+            const user = {
+                realName: req.body.realname,
+                username: req.body.username.toLowerCase(),
+                password: hash,
+                email: req.body.email
+            }
+            devAuthRLog(user)
+            try {
+                devAuthRLog('attempting new user setup')
+                await userDao.createUser(user);
+                res.setToastMessage("Account creation successful.  Please login using your new credentials.");
+                res.redirect("/home");
+            }
+            catch (err) {
+                devAuthRLog('new user setup failed!app returned error:',err);
+                res.redirect("/register")
+            }
+        });
+
+    })
+});
+
+module.exports = router;
