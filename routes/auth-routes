@@ -30,12 +30,13 @@ router.post("/new-account", async (req, res) => {
                 password: hash,
                 email: req.body.email
             }
-            devAuthRLog(user)
+            
             try {
                 devAuthRLog('attempting new user setup')
-                await userDao.createUser(user);
+                const userCreated = await userDao.createUser(user);
+                devAuthRLog(userCreated)
                 res.setToastMessage("Account creation successful.  Please login using your new credentials.");
-                res.redirect("/home");
+                res.redirect("/login");
             }
             catch (err) {
                 devAuthRLog('new user setup failed!app returned error:',err);
@@ -45,5 +46,13 @@ router.post("/new-account", async (req, res) => {
 
     })
 });
+
+
+router.get('/login', (req, res) => {
+    res.locals.userCreated = true;
+    console.log(res.locals.userCreated)
+    res.render('index');
+});
+
 
 module.exports = router;

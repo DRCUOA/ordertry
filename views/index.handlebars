@@ -1,11 +1,20 @@
+
 <!-- index view -->
 <section class="main">
-
+ {{!-- display a toast message if one provided --}}
+    {{#if toastMessage}}
+    <p class="toast">{{toastMessage}}</p>
+    <br>
+    {{/if}}
   <div class="btn-container">
+   
     <button id="register-button">Register</button>
-    <button id="sign-in-button">Sign In</button>
-  </div>
   
+    <button id="sign-in-button">Sign In</button>
+  
+  </div>  
+  {{!-- display a toast message if one provided --}}
+
 </section>
 
 <!-- Modal HTML for the register form -->
