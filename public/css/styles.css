@@ -2,8 +2,8 @@
   /* Color Palette */
     --primary-color: #000000;
     --secondary-color: #5F6368;
-    --light-color: #656365;
-    --dark-color: #777878;
+    --light-color: #6f57d3;
+    --dark-color: #232263;
     --danger-color: #ff3333;
     --success-color: #d5d5d5;
     --warning-color: #cfcfcf;
@@ -50,7 +50,7 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6, button {
-  color: var(--info-color);
+  color: var(--light-color);
   font-family: var(--primary-font);
   text-transform: uppercase;
   font-weight: 600;
@@ -223,22 +223,27 @@ button[type="submit"]:hover {
   margin-left: 10px;
 }
 
+ /**************************************************************************
+ *
+ *      MAIN NAV
+ *
+ **********/ 
+ 
+ .nav-container {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+ }
 
+ .hamburger {
+  display:flex;
+  flex-direction: row;
+  position: relative;
+  background-color: red;
+ }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
- /***************************************
+  /**********************************************************************
  *
  *      Responsive design
  *
@@ -246,7 +251,7 @@ button[type="submit"]:hover {
 
 
 
-/* Responsive design */
+ /* TO DO */
 
 @media (max-width: 768px) {
   /* Mobile styles */

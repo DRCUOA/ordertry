@@ -39,24 +39,52 @@ async function retrieveUserWithUserName(username) {
   return user;
 }
 
+/** Checks with the provided authToken if a user in the
+ * the db as a matching token.
+ * If there is no such user, undefined will be returned.
+ * 
+ * @param {string} authToken
+ */
+async function retrieveUserWithAuthToken(authToken) {
+  devUserDAO(`attempt to find user with authToken`)
+    const db = await dbPromise;
+    const user = await db.get(SQL`SELECT * FROM 
+                  app_users 
+                  WHERE 
+                  authToken = ${authToken};`) ;
+    if(user == undefined) {
+      devUserDAO('No/Invalid authToken in client request')
+    } else {
+      devUserDAO(user)
+    }
+  return user;
+};
+
 /** Update user details in db with new authToken.
  * @param {object} user
  */
 async function updateUser(user) {
  devUserDAO(`attempt to update user authToken`)
+
  db = await dbPromise;
+ 
  const updated_at = moment(new(Date)).format('YYYY-MM-DD HH:mm:ss');
+
+ devUserDAO(user.authToken, updated_at, user.id);
+
  await db.run(SQL`
         UPDATE app_users
         SET 
         authToken = ${user.authToken},
         updated_at = ${updated_at}
-        WHERE id = ${user.user_id};`);
+        WHERE id = ${user.id};`);
+  devUserDAO('end of updateUser() function')      
 };
 
 module.exports = {
   createUser,
   retrieveUserWithUserName,
+  retrieveUserWithAuthToken,
   updateUser
 };
 

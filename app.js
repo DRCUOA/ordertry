@@ -44,16 +44,12 @@ const hbs = exhbs.create({
 // setup middleware
 const { toaster } = require("./controllers/toaster");
 app.use(toaster);
-// const { addUserToLocals } = require("./controllers/auth-middleware");
-// app.use(addUserToLocals);
 
-app.get('/', (req, res) => {
-  if(res.locals.user) {
-    const userId = res.locals.user.user_id;
-    res.render("profile");
-  } else {
-    res.render('index')
-  }
+const { addUserToLocals, verifyAuthenticated } = require("./controllers/auth-middleware");
+app.use(addUserToLocals);
+
+app.get('/', verifyAuthenticated, (req, res) => {
+    res.render('homepage')
 });
 
 // setup routes

@@ -11,8 +11,6 @@ const devAuthRLog = debug('devLog:authRLog');
 const userDao = require('../models/users');
 
 router.post("/new-account", async (req, res) => {
-
-
     devAuthRLog("Received a request to the '/new-account' route");
     res.clearCookie("authToken");
 
@@ -72,12 +70,12 @@ router.post('/login', async (req, res) => {
                 }
                 res.cookie("authToken", authToken);
                 res.locals.user = user;
-                
+                res.render('homepage');
             } else {
                 devAuthRLog(`User ${user.username}`)
                 res.locals.user = null;
                 setToastMessage = "Authentication Failed!"
-                res.redirect("index");
+                res.redirect("/");
             }
         
         });
@@ -85,7 +83,7 @@ router.post('/login', async (req, res) => {
         devAuthRLog(`User ${user.username}`)
         res.locals.user = null;
         setToastMessage = "Authentication Failed!"
-        res.redirect("index");
+        res.redirect("/");
     }
 });
 
