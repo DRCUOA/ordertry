@@ -6,17 +6,13 @@ const debug = require('debug');
 // debug namespaces
 const devUserDAO = debug('devLog:userDAO');
 
-/**
+/** Creates a new user
 * @param user, the user to insert into the database 
 */
-
 async function createUser(user) {
-  devUserDAO("attempt dao function");
-
+  devUserDAO("attempt to create new user");
   const db = await dbPromise;
-
   const created_at = moment(new(Date)).format('YYYY-MM-DD HH:mm:ss');
-
   const result = await db.run(SQL`INSERT INTO app_users (username, email, password, name, created_at) VALUES (
     ${user.username},
     ${user.email},
@@ -29,8 +25,39 @@ async function createUser(user) {
     return user
 };
 
+/** Gets the user with the given username from the database.
+ * If there is no such user, undefined will be returned.
+ * 
+ * @param {string} username
+ */
+async function retrieveUserWithUserName(username) {
+  devUserDAO("attempt retrieve user with username");
+  const db = await dbPromise;
+  const user = await db.get(SQL`SELECT * FROM app_users WHERE
+  username = ${username};`);
+  devUserDAO(`User Found: ${user.username}`)
+  return user;
+}
+
+/** Update user details in db with new authToken.
+ * @param {object} user
+ */
+async function updateUser(user) {
+ devUserDAO(`attempt to update user authToken`)
+ db = await dbPromise;
+ const updated_at = moment(new(Date)).format('YYYY-MM-DD HH:mm:ss');
+ await db.run(SQL`
+        UPDATE app_users
+        SET 
+        authToken = ${user.authToken},
+        updated_at = ${updated_at}
+        WHERE id = ${user.user_id};`);
+};
+
 module.exports = {
-  createUser
+  createUser,
+  retrieveUserWithUserName,
+  updateUser
 };
 
 
