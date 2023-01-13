@@ -1,12 +1,29 @@
-
 <!-- homepage view -->
 <section class="main">
     {{!-- display a toast message if one provided --}}
-        {{#if toastMessage}}
-            <p class="toast">{{toastMessage}}</p>
-        <br>
-        {{/if}}
-    
+    {{#if toastMessage}}
+    <p class="toast">{{toastMessage}}</p>
+    <br>
+    {{/if}}
+
     <h1>Welcome</h1>
+<br>
+<br>
+<div class="embed-container">
+  <iframe id="frame" src="https://global.awxbio.cool/remote/glycemic/30944.htm?openid=2539623879436296" frameborder="0"></iframe>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <form action="/data/upload" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="file">Upload CSV file</label>
+            <input type="file" name="file" id="file" class="form-control-file">
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
 
 </section>

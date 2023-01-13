@@ -9,6 +9,8 @@
 // setup express server, app and PORT variables
 const express = require('express');
 const app = express();
+const cors = require("cors");
+const multer = require("multer");
 const port = process.env.PORT || 5001;
 
 // enable dev dependecies for HTTP loggin and debug logs
@@ -20,6 +22,9 @@ const devApp = debug('devLog:App');
 devApp('dev logs enabled');
 
 app.use(morgan('tiny'));
+
+// Enable CORS
+app.use(cors());
 
 // setup cookieParse
 const cookieParser = require('cookie-parser');
@@ -52,9 +57,28 @@ app.get('/', verifyAuthenticated, (req, res) => {
     res.render('homepage')
 });
 
+// Set up multer for file uploads
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./uploads");
+  },
+  filename: function (req, file, cb) {
+    cb(null, new Date().toISOString() + file.originalname);
+  },
+});
+const upload = multer({ storage });
+
+
+
 // setup routes
 const authRoutes = require("./routes/auth-routes");
 app.use('/', authRoutes);
+
+const dataRoutes = require("./routes/dataRoutes");
+app.use("/data", dataRoutes);
+
+const chartRoutes = require("./routes/chartRoutes");
+app.use('/charts', chartRoutes);
 
 // start the server runnign:
 app.listen(port, () => {

@@ -2,10 +2,10 @@
   /* Color Palette */
     --primary-color: #000000;
     --secondary-color: #5F6368;
-    --light-color: #6f57d3;
-    --dark-color: #232263;
+    --light-color: #efeef1;
+    --dark-color: #4a496f;
     --danger-color: #ff3333;
-    --success-color: #d5d5d5;
+    --success-color: #484646;
     --warning-color: #cfcfcf;
     --info-color: #F3F3F3;
 
@@ -241,6 +241,11 @@ button[type="submit"]:hover {
   flex-direction: row;
   position: relative;
   background-color: red;
+ }
+
+ #frame {
+height: 500px;
+width: 600px;
  }
 
   /**********************************************************************
