@@ -3,7 +3,7 @@ const d3 = require('d3');
 // make an async fetch call to the server for the raw data and await the promise resolution to assign it to reference 'data' for formatting later.
 async function fetchData() {
   // Fetch data from endpoint
-  const response = await fetch("/chart-data");
+  const response = await fetch("/charts/chart-data");
   const data = await response.json();
   return data;
 };
