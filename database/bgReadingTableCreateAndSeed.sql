@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS bgReadings;
 CREATE TABLE "bgReadings" (
-	"id"	INT,
+	"id"	INT PRIMARY KEY AUTOINCREMENT,
 	"device"	TEXT,
 	"serial_number"	TEXT,
 	"device_timestamp"	TEXT,
@@ -20,8 +20,7 @@ CREATE TABLE "bgReadings" (
 	"meal_insulin_units"	NUMERIC,
 	"correction_insulin_unit"	NUMERIC,
 	"user_change_insulin_units",
-	"bg"	NUMERIC,
-	PRIMARY KEY("id")
+	"bg"	NUMERIC
 );
 
 INSERT INTO bgReadings (

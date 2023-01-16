@@ -5,25 +5,18 @@ const debug = require('debug');
 
 // debug namespaces
 const devChartDAOLog = debug('devLog:chartDAO');
-devChartDAOLog(queryTimeStamp = moment(new (Date)).format('YYYY-MM-DD HH:mm:ss'));
 
 async function getBgReadingsAll(attributes) {
-  if (!attributes.length || !Array.isArray(attributes)) { return JSON.stringify({}); } else {
-    let sql = `SELECT * FROM bgReadings WHERE `;
-    let values = [];
 
-    attributes.forEach((attribute, index) => {
-      if (index === 0) {
-        sql += `${attribute} = ?`;
-      } else {
-        sql += ` AND ${attribute} = ?`;
-      }
-      values.push(attributes[attribute]);
-    });
+  const db = await dbPromise;
 
-    let db = await dbPromise;
+  devChartDAOLog(`getBgReadingsAll call at timestamp: ${queryTimeStamp = moment(new (Date)).format('YYYY-MM-DD HH:mm:ss')}`);
+  const rows = db.all(SQL`SELECT BG, device_timestamp FROM bgReadings`);
 
-    return db.all(SQL(sql), values)
-      .then((rows) => JSON.stringify(rows));
-  }
+  return rows;
+
 };
+
+module.exports = {
+  getBgReadingsAll
+}

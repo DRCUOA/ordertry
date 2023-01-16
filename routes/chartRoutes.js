@@ -7,14 +7,16 @@ const debug = require('debug');
 const devChartRLog = debug('devLog:chartRLog');
 
 // import dao required
-const chartDao = require('../models/chart.js');
+const chartDao = require('../models/chart');
 
 // Get data for chart
 router.get("/chart-data", async (req, res) => {
+  devChartRLog("GET /chart-data request")
   try {
     // Fetch data from database
-    const attributes = ({"Device_Timestamp": "?", "BG": "U"});
+    const attributes = ({"device_timestamp": "> '2022-01-01 00:00:00'"});
     const data = await chartDao.getBgReadingsAll(attributes);  
+    devChartRLog(data)
     res.json(data);
   } catch (err) {
     console.error(err);
