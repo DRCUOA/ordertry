@@ -1,4 +1,4 @@
-const { v4 : uuid } = require('uuid');
+const { v4: uuid } = require('uuid');
 const bcrypt = require('bcrypt');
 const express = require('express');
 const router = express.Router();
@@ -28,7 +28,7 @@ router.post("/new-account", async (req, res) => {
                 password: hash,
                 email: req.body.email
             }
-            
+
             try {
                 devAuthRLog('attempting new user setup')
                 const userCreated = await userDao.createUser(user);
@@ -38,12 +38,21 @@ router.post("/new-account", async (req, res) => {
             }
             catch (err) {
                 res.setToastMessage("Account creation unsuccessful!  Please try again or contact support for assistance.")
-                devAuthRLog('new user setup failed!app returned error:',err);
+                devAuthRLog('new user setup failed!app returned error:', err);
                 res.redirect("/stage-login")
             }
         });
 
     })
+});
+
+
+router.get("/logout", function (req, res) {
+    res.clearCookie("authToken");
+    devAuthRLog(`User ${res.locals.user.username} has logged out`)
+    res.locals.user = null;
+    res.setToastMessage("Successfully logged out! Come back soon, or don't what-evs");
+    res.redirect("/");
 });
 
 router.get('/stage-login', (req, res) => {
@@ -59,7 +68,7 @@ router.post('/login', async (req, res) => {
         const user = await userDao.retrieveUserWithUserName(username);
         const hash = user.password;
         bcrypt.compare(password, hash, async (err, result) => {
-            if(result) {
+            if (result) {
                 devAuthRLog(`User ${user.username} Authenticated`);
                 const authToken = uuid();
                 user.authToken = authToken;
@@ -70,14 +79,19 @@ router.post('/login', async (req, res) => {
                 }
                 res.cookie("authToken", authToken);
                 res.locals.user = user;
-                res.render('homepage');
+                let firstLetter = user.username.charAt(0).toUpperCase();
+                let username = user.username.split('');
+                username.splice(0, 1, firstLetter);
+                let greetName = username.join('');
+                res.render('homepage', { pageTitle: `Welcome ${greetName}` });
+
             } else {
                 devAuthRLog(`User ${user.username}`)
                 res.locals.user = null;
                 setToastMessage = "Authentication Failed!"
                 res.redirect("/");
             }
-        
+
         });
     } catch (err) {
         devAuthRLog(`User ${user.username}`)
@@ -86,5 +100,6 @@ router.post('/login', async (req, res) => {
         res.redirect("/");
     }
 });
+
 
 module.exports = router;

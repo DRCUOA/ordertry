@@ -1,21 +1,23 @@
-
 <!-- index view -->
-<section class="main">
- {{!-- display a toast message if one provided --}}
-    {{#if toastMessage}}
-    <p class="toast">{{toastMessage}}</p>
-    <br>
-    {{/if}}
-  <div class="btn-container">
-   
-    <button id="register-button">Register</button>
-  
-    <button id="sign-in-button">Sign In</button>
-  
-  </div>  
-  {{!-- display a toast message if one provided --}}
 
+<section class="main">
+  {{!-- display a toast message if one provided --}}
+  {{#if toastMessage}}
+  <p class="toast">{{toastMessage}}</p>
+  <br>
+  {{/if}}
+  <div class="btn-container">
+    <img src="/assets/logo-nb-nt-smiley-200.webp"
+        alt="logo"></img>
+        <h1>Come on in, or don&#39;t - what-evs</h1>
+    <button id="register-button">Register</button>
+    <button id="sign-in-button">Sign In</button>
+  </div>
+  {{!-- display a toast message if one provided --}}
 </section>
+
+{{!-- Modals
+--}}
 
 <!-- Modal HTML for the register form -->
 <div id="register-modal" class="modal">
@@ -23,7 +25,6 @@
     {{> new-account}}
   </div>
 </div>
-
 <!-- Modal HTML for the sign in form -->
 <div id="sign-in-modal" class="modal">
   <div class="modal-content">

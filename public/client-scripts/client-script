@@ -1,10 +1,9 @@
 // regisitration and login helpers:
 if (document.getElementById('register-button') || document.getElementById('sign-in-button')) {
-  document.getElementById('register-button').addEventListener('click', function () {
+    document.getElementById('register-button').addEventListener('click', function () {
     document.getElementById('register-modal').style.display = 'block';
   });
-
-  document.getElementById('sign-in-button').addEventListener('click', function () {
+    document.getElementById('sign-in-button').addEventListener('click', function () {
     document.getElementById('sign-in-modal').style.display = 'block';
   });
 
@@ -31,6 +30,14 @@ if (document.getElementById('register-button') || document.getElementById('sign-
   closeSignInButton.addEventListener('click', function () {
     modalSignIn.style.display = "none";
   });
+
+  let header = document.querySelector('#header');
+  header.style.display = "None";
+
+  let footer = document.querySelector('#footer');
+  footer.style.display = "None";
+
+
 } else if (document.getElementById('chart')) {
   async function fetchData() {
     // Fetch data from endpoint
@@ -41,10 +48,9 @@ if (document.getElementById('register-button') || document.getElementById('sign-
   fetchData();
 }
 
-// main nav:
 if (document.getElementById('weightloss')) {
-  const startDate = new Date(2023, 0, 11); // January 18, 2023 (month index starts at 0)
-  let weight = 131;
+  const startDate = new Date(2023, 0, 18); // January 18, 2023 (month index starts at 0)
+  let weight = 135;
 
   const weeklyTargets = [];
 
@@ -121,4 +127,19 @@ if (document.getElementById('weightloss')) {
       modal.style.display = "none";
     }
   });
+}
+
+
+if (document.getElementById('advice4Today')) {
+  console.log('fishcakes');
+  window.onload = () => {
+    getAdvice();
+  }
+}
+
+// helper functions:
+async function getAdvice() {
+  const response = await fetch('https://api.adviceslip.com/advice');
+  const data = await response.json();
+  document.getElementById('advice4Today').innerHTML = data.slip.advice;
 }

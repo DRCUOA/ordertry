@@ -54,7 +54,7 @@ const { addUserToLocals, verifyAuthenticated } = require("./controllers/auth-mid
 app.use(addUserToLocals);
 
 app.get('/', verifyAuthenticated, (req, res) => {
-    res.render('homepage')
+      res.render('homepage', {pageTitle: "Welcome"})
 });
 
 // Set up multer for file uploads
@@ -67,8 +67,6 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage });
-
-
 
 // setup routes
 const authRoutes = require("./routes/auth-routes");

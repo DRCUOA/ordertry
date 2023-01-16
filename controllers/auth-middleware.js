@@ -32,7 +32,7 @@ async function verifyAuthenticated(req,res,next) {
   if(res.locals.user) {
     next();
   } else {
-    res.render("index");
+    res.render("index", {pageTitle: "Welcome"});
   }
 };
 
