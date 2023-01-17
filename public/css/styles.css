@@ -1,3 +1,6 @@
+html body {
+  background-color: black;
+}
 /**************************************************************************
  *
  *      CSS Variables
@@ -6,7 +9,7 @@
 
 :root {
   /* Color Palette */
-  --primary-color: rgba(255, 255, 255, 1);
+  --primary-color: rgb(35, 35, 35);
   --off-primary-color: rgba(255, 255, 255, 0.6);
   --secondary-color: rgb(0, 0, 0);
   --tertiary-color: rgba(255, 69, 0, 1);
@@ -25,10 +28,12 @@
 
 
   /* Text size */
-  --base-text-size: 18px;
-  --mid-text-size: 22px;
-  --large-text-size: 32px;
-  --hero-text: 69px;
+  --sm-text-size: 12px;
+  --base-text-size: 17px;
+  --mid-text-size: 24px;
+  --large-text-size: 36px;
+  --vlarge-text-size: 48px;
+  --hero-text: 64px;
 
   /* Spacing */
   --base-spacing: 16px;
@@ -40,8 +45,6 @@
 
   /* Radius */
   --base-radius: 4px;
-
-
 }
 
 /*******************************************************************
@@ -133,12 +136,13 @@ a:hover {
 
 .main {
   display: block;
-  margin: 0px;
+  margin: 5vw;
+  box-shadow: var(--lg-box-shadow);
 }
 
 .main .btn-container {
   display: flex;
-  flex-direction:  column;
+  flex-direction:  row;
   align-items: center;
   justify-content: center;
   text-justify: auto;
@@ -183,7 +187,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items:flex-start;
-  background-color: var(--primary-color);
+  background-color: rgb(235, 235, 235);
   margin: var(--lg-spacing);
   padding: var(--sm-spacing);
   width: fit-content;
@@ -281,6 +285,7 @@ form > button:hover {
   background-image: url(/assets/hero-nature2-littleboy.jpeg);
   background-size: contain;
   background-repeat:repeat-x;
+  overflow: hidden;
 }
 
 #hero-text-items {
@@ -310,7 +315,7 @@ form > button:hover {
 }
 
 #advice4Today {
-  font-size: var(--hero-text);
+  font-size: var(--vlarge-text-size);
   padding-left: var(--lg-spacing);
 }
 
