@@ -5,7 +5,15 @@
   {{#if toastMessage}}
   <p class="toast">{{toastMessage}}</p>
   <br>
-  {{/if}}
+    <div class="btn-container">
+    <img src="/assets/logo-nb-nt-smiley-200.webp"
+        alt="logo"></img>
+    <button id="register-button">Register</button>
+    <button id="sign-in-button">Sign In</button>
+  </div>
+  {{!-- display a toast message if one provided --}}
+</section>
+  {{else}}
   <div class="btn-container">
     <img src="/assets/logo-nb-nt-smiley-200.webp"
         alt="logo"></img>
@@ -15,7 +23,7 @@
   </div>
   {{!-- display a toast message if one provided --}}
 </section>
-
+ {{/if}}
 {{!-- Modals
 --}}
 
