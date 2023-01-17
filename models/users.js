@@ -31,13 +31,13 @@ async function createUser(user) {
  * @param {string} username
  */
 async function retrieveUserWithUserName(username) {
-  devUserDAO("attempt retrieve user with username");
-  const db = await dbPromise;
-  const user = await db.get(SQL`SELECT * FROM app_users WHERE
-  username = ${username};`);
-  devUserDAO(`User Found: ${user.username}`)
-  return user;
-}
+      devUserDAO("attempt retrieve user with username");
+      const db = await dbPromise;
+      const user = await db.get(SQL`SELECT * FROM app_users WHERE
+      username = ${username};`);
+      devUserDAO(`User Found: ${user.username}`)
+      return user;   
+};
 
 /** Checks with the provided authToken if a user in the
  * the db as a matching token.

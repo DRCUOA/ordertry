@@ -204,13 +204,11 @@ label, input {
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-  box-shadow: var(--base-box-shadow);
-  padding: 4px;
+  padding: 2px;
 }
 
 input:focus {
   background-color: rgb(184, 184, 184);
-  font-weight: bold;
 }
 
 form > button {
@@ -223,8 +221,6 @@ form > button:hover {
   background-color: var(--tertiary-color);
   color: var(--primary-color);
 }
-
-
 
 #close-log-in, #reg-close {
     position: absolute;
@@ -245,7 +241,6 @@ form > button:hover {
   transform-origin: center;
   font-weight: 900;
 }
-
 
 /**************************************************************************
  *
@@ -296,7 +291,7 @@ form > button:hover {
 }
 
 #box2 {
-  margin-top: 200px;
+  margin-top: 140px;
   padding: 6.9px;
 }
 
