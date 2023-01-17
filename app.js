@@ -78,6 +78,9 @@ app.use("/data", dataRoutes);
 const chartRoutes = require("./routes/chartRoutes");
 app.use('/charts', chartRoutes);
 
+const clientInputValidation = require('./routes/clientInputValidationRoutes');
+app.use('/validation', clientInputValidation);
+
 // start the server runnign:
 app.listen(port, () => {
   devApp(`User-db version 0.0.1 | App Listening on port ${port}`)

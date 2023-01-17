@@ -94,7 +94,7 @@ router.post('/login', async (req, res) => {
 
         });
     } catch (err) {
-        devAuthRLog(`User ${user.username}`)
+        devAuthRLog(`User Not Found`)
         res.locals.user = null;
         setToastMessage = "Authentication Failed!"
         res.redirect("/");
