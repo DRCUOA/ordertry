@@ -72,12 +72,6 @@ const upload = multer({ storage });
 const authRoutes = require("./routes/auth-routes");
 app.use('/', authRoutes);
 
-const dataRoutes = require("./routes/dataRoutes");
-app.use("/data", dataRoutes);
-
-const chartRoutes = require("./routes/chartRoutes");
-app.use('/charts', chartRoutes);
-
 const clientInputValidation = require('./routes/clientInputValidationRoutes');
 app.use('/validation', clientInputValidation);
 
