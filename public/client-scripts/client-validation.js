@@ -77,7 +77,7 @@ document.querySelector('#txtPassword').addEventListener('keyup', () => {
     document.querySelector('#pwd-status').innerText = "";
     setSubmitButton();
   } else {
-    document.querySelector('#pwd-status').innerHTML = "Password must contain at least 8 characters,&#10; one uppercase letter,&#10; one lowercase letter,&#10; one special character from [ @$!%*?& ],&#10; and one digit.";
+    document.querySelector('#pwd-status').innerHTML = "Password must contain at least 8 characters, at least one of which must be uppercase, lowercase and numeric.";
     setSubmitButton();
   }
 });
@@ -104,6 +104,6 @@ document.querySelector('#pwd-confirm').addEventListener('keyup', () => {
 }
 
 function isValidPassword(password) {
-  var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  var passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,}$/;
   return passwordRegex.test(password);
 }

@@ -1,9 +1,9 @@
 // regisitration and login helpers:
 if (document.getElementById('register-button') || document.getElementById('sign-in-button')) {
-    document.getElementById('register-button').addEventListener('click', function () {
+  document.getElementById('register-button').addEventListener('click', function () {
     document.getElementById('register-modal').style.display = 'block';
   });
-    document.getElementById('sign-in-button').addEventListener('click', function () {
+  document.getElementById('sign-in-button').addEventListener('click', function () {
     document.getElementById('sign-in-modal').style.display = 'block';
   });
 
@@ -143,3 +143,21 @@ async function getAdvice() {
   const data = await response.json();
   document.getElementById('advice4Today').innerHTML = data.slip.advice;
 }
+
+// hamburger and nav toggle
+if (document.getElementById('nav') || document.getElementById('hamburger')) {
+
+  const nav = document.getElementById("nav");
+  const hamburgerMenu = document.getElementById("hamburger-menu");
+
+  function toggleNav() {
+    if (nav.style.display === "block") {
+      nav.style.display = "none";
+      hamburgerMenu.classList.remove("open");
+    } else {
+      nav.style.display = "block";
+      hamburgerMenu.classList.add("open");
+    }
+  };
+};
+

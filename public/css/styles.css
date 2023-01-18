@@ -1,5 +1,5 @@
-html body {
-  background-color: var(--primary-color);
+body {
+  background-color: var(--off-primary-color);
 }
 /**************************************************************************
  *
@@ -9,7 +9,7 @@ html body {
 
 :root {
   /* Color Palette */
-  --primary-color: rgb(25, 25, 25);
+  --primary-color: rgba(255, 255, 255, .8);
   --off-primary-color: rgba(255, 255, 255, 0.6);
   --secondary-color: rgb(0, 0, 0);
   --tertiary-color: rgba(255, 69, 0, 1);
@@ -71,15 +71,10 @@ a:hover {
 
 
 #header {
-  margin: 0 6px 6px 6px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3.5em;
+  /* margin: 0 6px 6px 6px; */
   background-color: var(--primary-color);
-  padding: 10px;
-  box-shadow: 0px 4px 6px var(--secondary-color);
+  /* padding: 10px; */
+  /* box-shadow: 0px 4px 6px var(--secondary-color); */
 }
 
 #page-title-weight {
@@ -310,42 +305,65 @@ form > button:hover {
 
 .hero-ctas button {
   font-size: var(--mid-text-size);
+  background: linear-gradient(to top left, var(--primary-color), white ,var(--off-primary-color));
   padding: var(--sm-spacing);
-  border-radius: 10px;
+  border-radius: 90px;
+  color: var(--secondary-color);
 }
 
 #advice4Today {
   font-size: var(--vlarge-text-size);
   padding-left: var(--lg-spacing);
+  margin-left: 51vw;
 }
 
 /**************************************************************************
  *
- *      Weight Loss
+ *      Hamburger/Nav 
  *
  **********/
 
-.container {
-  display: block;
+#hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  top: 30px;
+  right: 12px;
+  height: 1rem;
+  width: 1rem;
+  cursor: pointer;
+}
+
+#hamburger-menu .bar {
   width: 100%;
-  margin: 0 auto;
-}
-
-table {
-  margin-top: 5em;
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th,
-td {
-  border: 1px solid var(--primary-color);
-  padding: 8px;
-  text-align: left;
-  background-color: var(--shading);
-}
-
-th {
+  height: 3px;
   background-color: var(--primary-color);
-  color: var(--secondary-color);
+  transform-origin: center;
+}
+
+#hamburger-menu.open .bar:nth-of-type(1) {
+  transform: rotate(45deg) translate(1px, 1px);
+}
+
+#hamburger-menu.open .bar:nth-of-type(2) {
+  opacity: 0;
+} 
+
+#hamburger-menu.open .bar:nth-of-type(3) {
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+#nav {
+  display: none;
+}
+
+/**************************************************************************
+ *
+ *      Index page 
+ *
+ **********/
+
+#index-toast {
+  color: var(--primary-color);
 }

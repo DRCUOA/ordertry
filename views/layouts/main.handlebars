@@ -13,23 +13,25 @@
 </head>
 
 <body>
-  <div id="header">
-    <h1 id="page-title-weight">{{pageTitle}}</h1>
-    <nav class="nav">
+ <div id="header">
+    {{!-- <h1 id="page-title-weight">pageTitle</h1> --}}
+    <div id="hamburger-menu" onclick="toggleNav()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <nav class="nav" id="nav">
       <a href="#">Home</a>
-      <a href="#">Health</a>
-      <a href="#">Money</a>
-      <a href="#">Learn</a>
-      <a href="#">Kids</a>
-      <a href="#">Projects</a>
+      <a href="#">Your Projects</a>
+      <a href="#">Your Profile</a>
+      <a href="#">Contact</a>
+      <a href="#">About</a>
       <a href="/logout">Log out</a>
     </nav>
-  </div>
-
+</div>
   <div id="content">
     {{{body}}}
   </div>
-
   <div id="footer">
     <p>Copyright © 2023 <span style="color: rgb(255,60,0)">nzWebApps</span><img src="/assets/logo-nb-nt-smiley-200.webp"
         alt="logo" style="height: 40px; width: 40px; margin: -9px -10px -11px 0px;"></p>
