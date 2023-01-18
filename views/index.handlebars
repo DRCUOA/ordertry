@@ -1,42 +1,39 @@
 <!-- index view -->
 <sections id="index-container">
-<section class="main">
-  {{!-- display a toast message if one provided --}}
-  {{#if toastMessage}}
-  <p class="toast">{{toastMessage}}</p>
-  <br>
+  <section class="main">
+    {{!-- display a toast message if one provided --}}
+    {{#if toastMessage}}
     <div class="btn-container">
-    <img src="/assets/logo-nb-nt-smiley-200.webp"
-        alt="logo"></img>
-    <button id="register-button">Register</button>
-    <button id="sign-in-button">Sign In</button>
-  </div>
-  {{!-- display a toast message if one provided --}}
-</section>
+      <img src="/assets/logo-nb-nt-smiley-200.webp" alt="logo"></img>
+      <p class="toast">{{toastMessage}}</p>
+      <button id="register-button">Register</button>
+      <button id="sign-in-button">Sign In</button>
+    </div>
+
+  </section>
   {{else}}
   <div class="btn-container">
-    <img src="/assets/logo-nb-nt-smiley-200.webp"
-        alt="logo"></img>
-        <h1>Come on in, or don&#39;t - what-evs</h1>
+    <img src="/assets/logo-nb-nt-smiley-200.webp" alt="logo"></img>
+    <h1>Come on in, or don&#39;t - what-evs</h1>
     <button id="register-button">Register</button>
     <button id="sign-in-button">Sign In</button>
   </div>
-  {{!-- display a toast message if one provided --}}
-</section>
- {{/if}}
-{{!-- Modals
---}}
 
-<!-- Modal HTML for the register form -->
-<div id="register-modal" class="modal">
-  <div class="modal-content">
-    {{> new-account}}
+  </section>
+  {{/if}}
+  {{!-- Modals
+  --}}
+
+  <!-- Modal HTML for the register form -->
+  <div id="register-modal" class="modal">
+    <div class="modal-content">
+      {{> new-account}}
+    </div>
   </div>
-</div>
-<!-- Modal HTML for the sign in form -->
-<div id="sign-in-modal" class="modal">
-  <div class="modal-content">
-    {{> login}}
+  <!-- Modal HTML for the sign in form -->
+  <div id="sign-in-modal" class="modal">
+    <div class="modal-content">
+      {{> login}}
+    </div>
   </div>
-</div>
 </sections>

@@ -32,7 +32,7 @@ document.querySelector('#email').addEventListener('keyup', () => {
       .then(data => {
           if(data.message == "inuse") {
               emailNotInUse = false;
-              document.querySelector('#email-status').innerText = "already in use!";
+              document.querySelector('#email-status').innerText = "Email already in use!";
               setSubmitButton();
           } else {
               emailNotInUse = true;
@@ -55,7 +55,7 @@ document.querySelector('#username').addEventListener('keyup', () => {
       .then(data => {
         if (data.message == "taken") {
           userNameNotInUse = false;
-          document.querySelector('#username-status').innerText = "already taken!";
+          document.querySelector('#username-status').innerText = "Username already taken!";
           setSubmitButton();
         } else {
           userNameNotInUse = true;
@@ -72,13 +72,12 @@ document.querySelector('#username').addEventListener('keyup', () => {
 
 document.querySelector('#txtPassword').addEventListener('keyup', () => {
   let password = pwdToCheck.value;
-  if(password != "") {
-    passwordValid = true;
+  passwordValid = isValidPassword(password)
+  if(passwordValid) {
     document.querySelector('#pwd-status').innerText = "";
     setSubmitButton();
   } else {
-    passwordValid = false;
-    document.querySelector('#pwd-status').innerText = "password can not be empty!";
+    document.querySelector('#pwd-status').innerHTML = "Password must contain at least 8 characters,&#10; one uppercase letter,&#10; one lowercase letter,&#10; one special character from [ @$!%*?& ],&#10; and one digit.";
     setSubmitButton();
   }
 });
@@ -102,4 +101,9 @@ document.querySelector('#pwd-confirm').addEventListener('keyup', () => {
 });
 } else {
   console.log("not on validation page")
+}
+
+function isValidPassword(password) {
+  var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  return passwordRegex.test(password);
 }
