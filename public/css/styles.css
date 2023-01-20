@@ -9,7 +9,7 @@ body {
 
 :root {
   /* Color Palette */
-  --primary-color: rgba(255, 255, 255, .8);
+  --primary-color: rgba(255, 255, 255, 0.8);
   --off-primary-color: rgba(255, 255, 255, 0.6);
   --secondary-color: rgb(0, 0, 0);
   --tertiary-color: rgba(255, 69, 0, 1);
