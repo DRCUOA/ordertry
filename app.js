@@ -11,7 +11,7 @@ const express = require('express');
 const app = express();
 const cors = require("cors");
 const multer = require("multer");
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 1234;
 
 // enable dev dependecies for HTTP loggin and debug logs
 const morgan = require('morgan');
@@ -77,5 +77,5 @@ app.use('/validation', clientInputValidation);
 
 // start the server runnign:
 app.listen(port, () => {
-  devApp(`User-db version 0.0.1 | App Listening on port ${port}`)
+  devApp(`OrderTry version 0.0.1 | App Listening on port ${port}`)
 });
