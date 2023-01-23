@@ -386,5 +386,5 @@ form > button:hover {
  **********/
 
 #index-toast {
-  color: var(--primary-color);
+  color: var(--tertiary-color);
 }

@@ -161,3 +161,10 @@ if (document.getElementById('nav') || document.getElementById('hamburger')) {
   };
 };
 
+
+if(document.querySelector('#start')) {
+  document.querySelector('#start').addEventListener('click', () => {
+    console.log('lef leg of');
+  });
+}
+
