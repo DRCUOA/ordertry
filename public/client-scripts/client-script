@@ -131,10 +131,13 @@ if (document.getElementById('weightloss')) {
 
 
 if (document.getElementById('advice4Today')) {
-  console.log('fishcakes');
   window.onload = () => {
     getAdvice();
   }
+  const start = document.querySelector('#box3');
+  start.addEventListener('click', () => {
+    console.log('Request to start')
+  })
 }
 
 // helper functions:
@@ -152,19 +155,13 @@ if (document.getElementById('nav') || document.getElementById('hamburger')) {
 
   function toggleNav() {
     if (nav.style.display === "block") {
+      document.getElementById("advice4Today").style.display = 'block';
       nav.style.display = "none";
       hamburgerMenu.classList.remove("open");
     } else {
+      document.getElementById("advice4Today").style.display = 'none';
       nav.style.display = "block";
       hamburgerMenu.classList.add("open");
     }
   };
 };
-
-
-if(document.querySelector('#start')) {
-  document.querySelector('#start').addEventListener('click', () => {
-    console.log('lef leg of');
-  });
-}
-

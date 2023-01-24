@@ -71,10 +71,7 @@ a:hover {
 
 
 #header {
-  /* margin: 0 6px 6px 6px; */
   background-color: var(--primary-color);
-  /* padding: 10px; */
-  /* box-shadow: 0px 4px 6px var(--secondary-color); */
 }
 
 #page-title-weight {
@@ -156,6 +153,10 @@ a:hover {
   padding: 10px 10px;
   margin: 20px;
   width: 150px
+}
+
+#index-toast {
+  color: var(--tertiary-color);
 }
 
 /**************************************************************************
@@ -247,54 +248,16 @@ form > button:hover {
  *
  **********/
 
-/* Add some styling for the hero section */
-.hero {
-  background-color: black;
-  text-align: center;
-  padding: 50px;
-}
-
-/* Style the heading and subheading */
-.hero h1 {
-  font-size: var(--hero-text);
-}
 
 .hero p {
   font-size: var(--mid-text-size);
   margin-bottom: 40px;
 }
 
-/* Add a button to the hero section */
-.hero .button {
-  background-color: var(--tertiary-color);
-  color: var(--primary-color);
-  padding: 12px 24px;
-  border-radius: 5px;
-  text-decoration: none;
-}
-
-#hero-content {
-  /* background */
-  display: block;
-  height: 2000px;
-  width: 100%;
-  overflow: hidden;
-}
-
 .p-img-1 {
-  height: 1000px;
+  height: 700px;
   width: 100vw;
   background-image: url(/assets/hero-nature2-littleboy.jpeg);
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.p-img-2 {
-  height: 1000px;
-  width: 100vw;
-  background-image: url(/assets/photo-4.jpeg);
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -316,14 +279,14 @@ form > button:hover {
 .hero-ctas {
   display: flex;
   flex-direction: row;
-  position: relative;
+  position: absolute;
   top: 75vh;
   padding-left: var(--lg-spacing);
 }
 
 .hero-ctas button {
   font-size: var(--mid-text-size);
-  background: linear-gradient(to top left, var(--primary-color), white ,var(--off-primary-color));
+  background: linear-gradient(to top left, black, white , gray);
   padding: var(--sm-spacing);
   border-radius: 90px;
   color: var(--secondary-color);
@@ -331,11 +294,15 @@ form > button:hover {
 
 #advice4Today {
   position: fixed;
-  top: 35vh;
+  top: 10vh;
   right: 10vw;
   font-size: var(--vlarge-text-size);
   padding-left: var(--lg-spacing);
   margin-left: 51vw;
+}
+
+#box3 > button {
+  cursor: pointer;
 }
 
 /**************************************************************************
@@ -381,10 +348,45 @@ form > button:hover {
 
 /**************************************************************************
  *
- *      Index page 
+ *      
  *
  **********/
 
-#index-toast {
-  color: var(--tertiary-color);
+
+
+/**************************************************************************
+ *
+ *      Media Queries 
+ *
+ **********/
+
+
+@media only screen and (max-width: 650px) {
+
+.nav > a {
+  display: block;
+  margin: 10px;
+}
+
+#advice4Today {
+  font-size: var(--large-text-size);
+  top: 5vh;
+  left: 0vw;
+  padding-left: 0;
+}
+
+.main .btn-container {
+  flex-direction:  column;
+}
+
+.p-img-1 {
+  height: 700px;
+  width: 100vw;
+  background-image: url(/assets/hero-nature2-littleboy.jpeg);
+  background-attachment: fixed;
+  background-position: right;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 }
