@@ -75,6 +75,9 @@ app.use('/', authRoutes);
 const clientInputValidation = require('./routes/clientInputValidationRoutes');
 app.use('/validation', clientInputValidation);
 
+const cards = require('./routes/cards');
+app.use('/cards', cards);
+
 // start the server runnign:
 app.listen(port, () => {
   devApp(`OrderTry version 0.0.1 | App Listening on port ${port}`)

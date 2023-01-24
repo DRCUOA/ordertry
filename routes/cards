@@ -1,0 +1,18 @@
+const express = require('express');
+const { verifyAuthenticated } = require('../controllers/auth-middleware');
+const router = express.Router();
+
+const debug = require('debug');
+
+//set-up debug namespace
+const devCardRLog = debug('devLop:cardRLog');
+
+//import dao required
+const cardDao = require('../models/cards');
+
+router.get("/card-scroll", verifyAuthenticated,  function (req, res) {
+  // make a call to dao to retreive cards
+  res.render('cards-scroller')
+});
+
+module.exports = router;
