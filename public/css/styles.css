@@ -399,7 +399,7 @@ form > button:hover {
   width: 98%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr, 3fr, 1fr;
+  grid-template-rows: auto;
   grid-template-areas: 
   "header"
   "content"
@@ -408,17 +408,20 @@ form > button:hover {
   "footer";
   margin:10px;
   box-shadow: var(--base-box-shadow);
-  background: linear-gradient(to top, white, rgb(211, 211, 211), rgb(93, 93, 93));
+  background: linear-gradient(to top, white, rgb(211, 211, 211), rgb(115, 115, 115));
+  font-size: 18px;
+  transition: transform 0.8s;
 }
 
 .card-title {
   grid-area: 'header';
+  height: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: scroll;
   color: var(--primary-color);
-  padding: 5px;
+  padding: 0px;
   /* border-bottom: 1px solid gray; */
 }
 
@@ -428,7 +431,7 @@ form > button:hover {
   flex-direction: column;
   overflow: scroll;
   padding: 5px;
-
+  transition: transform 0.8s;
 }
 
 .card-footer {
@@ -442,16 +445,24 @@ form > button:hover {
 }
 
 .card-footer > button {
-  margin: 5px;
-  padding: 3px;
-  border: none;
-  border-radius: 50px;
-  background-color: white;
-  box-shadow: var(--base-box-shadow);
-  color: var(--tertiary-color);
-  height: 4rem;
   width: 5rem;
+  height: 4rem;
   padding: 5px;
+  font-size: 80%; /* adjust as needed */
+  text-overflow: ellipsis; /* truncate text that doesn't fit */
+  overflow: hidden; /* hide any overflow */
+  border: none;
+  border-radius: 5px;
+  background-color: gray;
+  box-shadow: var(--base-box-shadow);
+  color: blue;
+}
+
+.card-footer > button:hover {
+  height: 4rem;
+  width: 8rem;
+  font-size: 70%;
+  background-color: whitesmoke;
 }
 
 .votes{
@@ -459,15 +470,16 @@ form > button:hover {
   flex-direction: row;
   align-items: flex-end;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 .upvote {
-  margin: 0px 20px;
+  margin: 0px 30px;
 }
 
 .downvote {
   transform: rotate(180deg);
-  margin: 0px 20px;
+  margin: 0px 30px;
 }
 
 .upvote:hover, .downvote:hover {
