@@ -1,0 +1,34 @@
+[
+  {
+    "difficulty_level": 1,
+    "question": "What is the difference between var and let in JavaScript?",
+    "options": [
+      "var is used to declare variables in the global scope, while let is used to declare variables in the local scope",
+      "var is used to declare variables in the local scope, while let is used to declare variables in the global scope",
+      "Both var and let are used to declare variables in the global scope",
+      "Both var and let are used to declare variables in the local scope"
+    ],
+    "correct_option": 1,
+    "explanation": "var is used to declare variables in the global scope, which means that it can be accessed from anywhere in the code. let, on the other hand, is used to declare variables in the local scope, which means that it can only be accessed within the block where it was declared. This makes let a better choice when declaring variables that are only needed within a specific block of code.",
+    "resources": {
+      "documentation_link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Declaring_variables",
+      "video_link": "https://www.youtube.com/watch?v=sjyJBL5fkp8"
+    }
+  },
+  {
+    "difficulty_level": 2,
+    "question": "What is closure in JavaScript?",
+    "options": [
+      "A closure is a function that returns another function",
+      "A closure is a function that retains access to variables in its outer scope even after the outer function has returned",
+      "A closure is a function that retains access to variables in its inner scope even after the inner function has returned",
+      "A closure is a function that retains access to variables in both its inner and outer scope even after the function has returned"
+    ],
+    "correct_option": 2,
+    "explanation": "A closure in JavaScript is a function that retains access to variables in its outer scope even after the outer function has returned. This allows the closure to remember the values of those variables and use them even after the outer function has completed. Closures are a powerful tool for managing state and are often used in JavaScript for creating private variables and implementing modules.",
+    "resources": {
+      "documentation_link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures",
+      "video_link": "https://www.youtube.com/watch?v=71AtaJpJHw0"
+    }
+  }
+]

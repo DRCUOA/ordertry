@@ -154,7 +154,7 @@ if (document.getElementById('nav') || document.getElementById('hamburger')) {
   const hamburgerMenu = document.getElementById("hamburger-menu");
 
   function toggleNav() {
-    if (nav.style.display === "block") {
+    if (nav.style.display === "flex") {
       if(document.getElementById("advice4Today")) {
         document.getElementById("advice4Today").style.display = 'block';}
       nav.style.display = "none";
@@ -162,7 +162,8 @@ if (document.getElementById('nav') || document.getElementById('hamburger')) {
     } else {
       if(document.getElementById("advice4Today")) {
         document.getElementById("advice4Today").style.display = 'none';}
-      nav.style.display = "block";
+      nav.style.display = "flex";
+      nav.style.flexDirection = "column";
       hamburgerMenu.classList.add("open");
     }
   };

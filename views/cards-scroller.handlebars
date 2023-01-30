@@ -8,25 +8,37 @@
   </nav>
 
   <section id="card-display">
+    {{#each questions}}
     <div class="card">
-      <div class="card-title">
-        <h3>Javascript</h3>
+      <div class="card-head">
+        <p>Question {{question_id}}</p>
+        <p>Difficulty Level {{difficulty_level}}</p>
       </div>
-      <div class="card-content">
-        <p>JavaScript is a multi-paradigm, dynamic language with types and operators, standard built-in objects, and methods. Its syntax is based on the Java and C languages — many structures from those languages apply to JavaScript as well.  JavaScript supports object-oriented programming with object prototypes and classes. It also supports functional programming since functions are first-class that can be easily created via expressions and passed around like any other object.</p>
-          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" class="info-link" target="_blank" >MDN Reference Docs: JavaScript</a>
+
+      <div class="card-question">
+        <fieldset>
+          <legend><strong>{{question}}</strong></legend>
+            {{#each options}}
+            <input type="radio" id="{{this}}" name="answer_option" value="{{this}}">
+            <label for="answer_option">{{this}}</label>
+            {{/each}}
+        </fieldset>
       </div>
-      <div class="card-footer">
-        <h3>Related:</h3>
-        <button>Web Dev</button>
-        <button>Front-end Dev</button>
-        <button>EMEAScript</button>
-        <button>Frameworks</button>
-        <button>React-Angular-Vue</button>
+      
+      <div class="card-solution">
+        <p>Correct Option: {{correct_option}}</p>
+        <p>Explanation: {{explanation}}</p>
+        </div>
+        <div class="card-detail-help">
+        <p>Resources:</p>
+        <ul>
+          <li>Docs: <a href="{{resources.documentation_link}}">{{resources.documentation_link}}</a></li>
+          <li>Video: <a href="{{resources.video_link}}">{{resources.video_link}}</a></li>
+        </ul>
       </div>
-      <div class="votes">
-        <img src="/assets/up.svg" alt="upvote" class="upvote" style="height:20px; width: 20px;"><span>Move Up</span>
-        <img src="/assets/up.svg" alt="downvote" class="downvote" style="height:20px; width: 20px;"><span>Move Down</span>
-      </div>
+    </div>
+    {{/each}}
   </section>
-  <section id="filter"> </section>
+
+  <section id="filter">
+  </section>
