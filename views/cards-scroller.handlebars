@@ -1,23 +1,23 @@
 <!-- cards scroller view -->
-<section id="cards-scroller">
+
   <nav>
     <form id="search-form">
       <input type="text" id="search-input" placeholder="Search...">
       <button type="submit" id="search-button">Search</button>
     </form>
   </nav>
-
+<section id="cards-scroller">
   <section id="card-display">
     {{#each questions}}
     <div class="card">
       <div class="card-head">
+        <p>Level {{difficulty_level}}</p>
         <p>Question {{question_id}}</p>
-        <p>Difficulty Level {{difficulty_level}}</p>
       </div>
 
       <div class="card-question">
-        <fieldset>
-          <legend><strong>{{question}}</strong></legend>
+        <fieldset style="border-radius: 10px;">
+          <legend style="padding: 10px;"><strong>{{question}}</strong></legend>
             {{#each options}}
             <input type="radio" id="{{this}}" name="answer_option" value="{{this}}">
             <label for="answer_option">{{this}}</label>
@@ -26,14 +26,13 @@
       </div>
       
       <div class="card-solution">
-        <p>Correct Option: {{correct_option}}</p>
-        <p>Explanation: {{explanation}}</p>
+        <p>Answer: {{correct_option}}</p>
+        <p>{{explanation}}</p>
         </div>
         <div class="card-detail-help">
-        <p>Resources:</p>
         <ul>
-          <li>Docs: <a href="{{resources.documentation_link}}">{{resources.documentation_link}}</a></li>
-          <li>Video: <a href="{{resources.video_link}}">{{resources.video_link}}</a></li>
+          <li><a href="{{resources.documentation_link}}">Documentation</a>
+          <a href="{{resources.video_link}}">YouTube</a></li>
         </ul>
       </div>
     </div>
