@@ -140,6 +140,17 @@ if (document.getElementById('advice4Today')) {
   })
 }
 
+if (document.querySelector('#cards-scroller')) {
+  const radioButtons = document.querySelectorAll('input[type="radio"]');
+  radioButtons.forEach(radioButton => {
+    radioButton.addEventListener('click', function () {
+      const cardSolution = this.closest('.card').querySelector('.card-solution');
+      cardSolution.style.display = (cardSolution.style.display === 'none') ? 'none' : 'block';
+    });
+  });
+}
+
+
 // helper functions:
 async function getAdvice() {
   const response = await fetch('https://api.adviceslip.com/advice');
@@ -155,13 +166,15 @@ if (document.getElementById('nav') || document.getElementById('hamburger')) {
 
   function toggleNav() {
     if (nav.style.display === "flex") {
-      if(document.getElementById("advice4Today")) {
-        document.getElementById("advice4Today").style.display = 'block';}
+      if (document.getElementById("advice4Today")) {
+        document.getElementById("advice4Today").style.display = 'block';
+      }
       nav.style.display = "none";
       hamburgerMenu.classList.remove("open");
     } else {
-      if(document.getElementById("advice4Today")) {
-        document.getElementById("advice4Today").style.display = 'none';}
+      if (document.getElementById("advice4Today")) {
+        document.getElementById("advice4Today").style.display = 'none';
+      }
       nav.style.display = "flex";
       nav.style.flexDirection = "column";
       hamburgerMenu.classList.add("open");

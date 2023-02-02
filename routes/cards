@@ -13,7 +13,7 @@ const cardDao = require('../models/cards');
 router.get("/card-scroll",  async function (req, res) {
   // make a call to dao to retreive cards
   const data = await cardDao.getAllCards();
-  devCardRLog(data.questions[0].options);
+  // devCardRLog(data.questions[0].options);
   res.render('cards-scroller', data);
 });
 

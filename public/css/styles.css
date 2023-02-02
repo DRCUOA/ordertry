@@ -413,11 +413,11 @@ form > button:hover {
   height: fit-content;
   width: 98%;
   overflow: scroll;
-  border: 1px solid gray;
-  border-radius: 10px;
   box-shadow: var(--lg-box-shadow);
   padding: 10px;
   margin-bottom: 20px;
+  border: 1px solid var(--tertiary-color);
+  border-radius: 30px;
 }
 
 .card-head {
@@ -432,25 +432,25 @@ form > button:hover {
 .card-question fieldset {
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
   align-items: flex-start;
-  font-size: 20px;
-  background-color: rgb(243, 243, 243);
+  gap: 20px;
   color: black;
+  background-color: rgb(243, 243, 243);
+  border-radius: 10px;
   box-shadow: var(--lg-box-shadow);
 }
 
-.card-question label {
-  margin-left: 20px;
+fieldset > label {
+  margin-left: 25px;
+  margin-top: -41px;
+}
+
+fieldset > legend {
+  margin: 20px;
 }
 
 .card-solution {
-  display: block;
-  border: 1px solid gray;
-  border-radius: 5px;
-  box-shadow: var(--lg-box-shadow);
-  margin: 5px;
-  padding: 5px;
+  display: none;
 }
 
 .card-detail-help {
