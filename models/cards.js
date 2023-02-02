@@ -17,6 +17,7 @@ async function getdocIdByQid(q_id) {
       return (docId[0].docs_id - 1); // minus to return index value as docIds start from 1
     } catch (err) {
       devCardDAO(err)
+      return 0
     }
 }
 
@@ -32,6 +33,26 @@ async function getTLinkByQid(q_id) {
       return (tutorialId[0].tutorial_id - 1); // minus to return index value as Ids start from 1
     } catch (err) {
       devCardDAO(err)
+      return 0
+    }
+}
+
+
+//get the answer for a particular question
+async function getAnswer(q_id) {
+  const db = await dbPromise;
+    try {
+
+      const correctOptionId = await db.all(SQL`
+        SELECT option_id
+        FROM n_answers
+        WHERE q_id = ${q_id}`)
+        
+      return correctOptionId[0].option_id - 1;
+
+    } catch (err) {
+      devCardDAO(err)
+      return 0
     }
 }
 
@@ -60,7 +81,7 @@ async function getAllCards() {
       const tutorials = await db.all(SQL`
       SELECT * 
       FROM n_tutorials`);
-      devCardDAO('Retrieve Tutorials', tutorials);
+      // devCardDAO('Retrieve Tutorials', tutorials);
 
       const questions = createJSONObject(questionsData, optionsData, docs, tutorials);
 
@@ -88,17 +109,22 @@ async function getAllCards() {
       }
 
       let docIndex = await getdocIdByQid(question.q_id)
-      
       let tutorialIndex = await getTLinkByQid(question.q_id);
+      let answerIndex = await getAnswer(question.q_id);
+      devCardDAO(answerIndex)
 
-      devCardDAO(tutorialIndex);
-      
       let newQuestion = {
         "question_id": question.q_id,
         "question": question.question,
         "options": questionOptions,
         "documentation_link": docs[docIndex].doc_link,
-        "video_link": tutorials[tutorialIndex].tutorial_link
+        "video_link": tutorials[tutorialIndex].tutorial_link,
+        "correct_option": options[answerIndex].option_text
+        
+// {{correct_option}}
+// {{explanation}}
+
+
       };
       newJSON.questions.push(newQuestion);
     }
