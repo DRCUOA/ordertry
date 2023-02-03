@@ -450,7 +450,7 @@ fieldset > legend {
 }
 
 .card-solution {
-  display: none;
+  display: block;
 }
 
 .card-detail-help {

@@ -6,15 +6,17 @@
   </form>
 </nav>
 <section id="cards-scroller">
+  
   <section id="card-display">
     {{#each questions}}
     <div class="card">
       <div class="card-head">
-        <p>Question {{question_id}}</p>
+        <p id="{{correct_option_id}}">Question {{question_id}}</p>
       </div>
 
       <div class="card-question">
         <fieldset>
+          <script>{{question_id}}</script>
           <legend><strong>{{question}}</strong></legend>
           {{#each options}}
           <input type="radio" id="{{this}}" name="answer_option" value="{{this}}">
@@ -24,9 +26,9 @@
       </div>
 
       <div class="card-solution">
-        <p>Answer: {{correct_option}}</p>
-        <p>{{explanation}}</p>
+        {{!-- script inserts dynamic html based on response to check on selected option when option element select event is fired --}}
       </div>
+
       <div class="card-detail-help">
         <ul>
           <li><a href="{{documentation_link}}">Documentation</a>

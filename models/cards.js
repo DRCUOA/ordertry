@@ -46,8 +46,8 @@ async function getAnswer(q_id) {
       const correctOptionId = await db.all(SQL`
         SELECT option_id
         FROM n_answers
-        WHERE q_id = ${q_id}`)
-        
+        WHERE q_id = ${q_id}`);  
+
       return correctOptionId[0].option_id - 1;
 
     } catch (err) {
@@ -56,6 +56,26 @@ async function getAnswer(q_id) {
     }
 }
 
+async function isAnswerOption(targetText) {
+  const db = await dbPromise;
+    try {
+        const correctOptions = await db.all(SQL`
+          SELECT n_options.option_text, n_answers.option_id
+          FROM n_options
+          INNER JOIN n_answers
+          ON n_options.option_id = n_answers.option_id;`);
+        devCardDAO('correctOptionsArray:', correctOptions)
+        if(correctOptions.some(option => option.option_text === targetText)) {
+          devCardDAO('correctOption includes = true')
+          return true;
+        } else 
+          devCardDAO('correctOption includes = false')
+          return false;
+    } catch (err) {
+      devCardDAO(err)
+      return false
+    }
+}
 
 // get all cards
 async function getAllCards() {
@@ -110,8 +130,12 @@ async function getAllCards() {
 
       let docIndex = await getdocIdByQid(question.q_id)
       let tutorialIndex = await getTLinkByQid(question.q_id);
+
+
       let answerIndex = await getAnswer(question.q_id);
-      devCardDAO(answerIndex)
+      // devCardDAO(answerIndex)
+
+
 
       let newQuestion = {
         "question_id": question.q_id,
@@ -119,7 +143,8 @@ async function getAllCards() {
         "options": questionOptions,
         "documentation_link": docs[docIndex].doc_link,
         "video_link": tutorials[tutorialIndex].tutorial_link,
-        "correct_option": options[answerIndex].option_text
+        "correct_option": options[answerIndex].option_text,
+        "correct_option_id": options[answerIndex].option_id
         
 // {{correct_option}}
 // {{explanation}}
@@ -129,11 +154,12 @@ async function getAllCards() {
       newJSON.questions.push(newQuestion);
     }
   
-    // devCardDAO('Question Generated:', newJSON);
+    devCardDAO('Question Generated:', newJSON);
     return newJSON;
   }
   
 
 module.exports = {
-  getAllCards
+  getAllCards,
+  isAnswerOption  
 }

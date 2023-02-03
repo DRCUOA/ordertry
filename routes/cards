@@ -17,4 +17,13 @@ router.get("/card-scroll",  async function (req, res) {
   res.render('cards-scroller', data);
 });
 
+router.get("/answer", async (req, res) => {
+  const isAnswerOption = await cardDao.isAnswerOption(req.query.selected);
+  devCardRLog(isAnswerOption);
+  if(isAnswerOption) {
+  res.send(isAnswerOption);
+  } else
+  res.send(false);
+})
+
 module.exports = router;

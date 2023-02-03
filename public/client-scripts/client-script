@@ -1,3 +1,5 @@
+
+
 // regisitration and login helpers:
 if (document.getElementById('register-button') || document.getElementById('sign-in-button')) {
   document.getElementById('register-button').addEventListener('click', function () {
@@ -141,15 +143,57 @@ if (document.getElementById('advice4Today')) {
 }
 
 if (document.querySelector('#cards-scroller')) {
+
+  let attempts = sessionStorage.getItem('attempts') || 0;
+  attempts = parseInt(attempts);
+  let score = sessionStorage.getItem('score') || 0;
+  score = parseInt(score);
+
   const radioButtons = document.querySelectorAll('input[type="radio"]');
   radioButtons.forEach(radioButton => {
-    radioButton.addEventListener('click', function () {
+    radioButton.addEventListener('click', async function (event) {
       const cardSolution = this.closest('.card').querySelector('.card-solution');
-      cardSolution.style.display = (cardSolution.style.display === 'none') ? 'none' : 'block';
+
+      const checkAnswer = await fetch('/cards/answer?selected=' + event.target.value)
+        .then(response => {
+          return response.json();
+        });
+
+      // increment attempt count and store it in local storage
+      const incrementAttempts = () => {
+        attempts++;
+        sessionStorage.setItem('attempts', attempts);
+      };
+
+      incrementAttempts(); // increment the attempts count here
+
+      if (checkAnswer == true) {
+        // increment score and store it in local storage
+        const incrementScore = () => {
+          score++;
+          sessionStorage.setItem('score', score);
+        };
+
+        incrementScore(); // increment the score count here
+
+        cardSolution.innerHTML = `
+        <div class="card-solution">
+          <p>That&#39;s correct!</p>
+          <p>Your score:  ${score} out of ${attempts} attempts.</p>
+        </div>`;
+        cardSolution.style.display = (cardSolution.style.display === 'none') ? 'block' : 'block';
+      } else {
+        cardSolution.innerHTML = `
+        <div class="card-solution">
+          <p>That&#39;s incorrect!</p> 
+          <p>Try again, review the docs or tutorial if you need to swat up.</p>
+          <p>Your score:  ${score} out of ${attempts} attempts.</p>
+        </div>`;
+        cardSolution.style.display = (cardSolution.style.display === 'none') ? 'block' : 'block';
+      }
     });
   });
 }
-
 
 // helper functions:
 async function getAdvice() {
