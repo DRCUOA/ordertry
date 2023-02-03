@@ -114,15 +114,13 @@ async function getAllCards() {
   }  
 
   async function createJSONObject(questions, options, docs, tutorials) {
-    let newJSON = { "questions": [] };
+    let jsonQuestions = { "questions": [] };
   
     for (let i = 0; i < questions.length; i++) {
       let question = questions[i];
-      let questionOptions = [];
-    
+      let questionOptions = []; 
       for (let j = 0; j < options.length; j++) {
         let option = options[j];
-  
         if (option.q_id === question.q_id) {
           questionOptions.push(option.option_text);
         }
@@ -130,13 +128,9 @@ async function getAllCards() {
 
       let docIndex = await getdocIdByQid(question.q_id)
       let tutorialIndex = await getTLinkByQid(question.q_id);
-
-
       let answerIndex = await getAnswer(question.q_id);
+
       // devCardDAO(answerIndex)
-
-
-
       let newQuestion = {
         "question_id": question.q_id,
         "question": question.question,
@@ -145,17 +139,23 @@ async function getAllCards() {
         "video_link": tutorials[tutorialIndex].tutorial_link,
         "correct_option": options[answerIndex].option_text,
         "correct_option_id": options[answerIndex].option_id
-        
-// {{correct_option}}
-// {{explanation}}
-
-
       };
-      newJSON.questions.push(newQuestion);
+      jsonQuestions.questions.push(newQuestion);
     }
   
-    devCardDAO('Question Generated:', newJSON);
-    return newJSON;
+    devCardDAO('Question Generated:', jsonQuestions);
+
+    const shuffle = (array) => {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    };
+    
+    jsonQuestions.questions = shuffle(jsonQuestions.questions);
+    
+    return jsonQuestions;
   }
   
 
