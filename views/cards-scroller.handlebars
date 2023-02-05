@@ -1,38 +1,20 @@
 <!-- cards scroller view -->
-{{!-- <nav>
-  <form id="search-form" action="">
-    <input type="text" id="search-input" placeholder="Search...">
-    <button type="submit" id="search-button">Search</button>
-  </form>
-</nav> --}}
-
 <nav>
   <form id="search-form" action="">
     <input type="text" id="search-input" name="searchTerm" placeholder="Search...">
     <button type="submit" id="search-button">Search</button>
   </form>
 </nav>
-
-<script>
-  document.getElementById("search-form").addEventListener("submit", function (event) {
-    event.preventDefault();
-    const searchTerm = document.getElementById("search-input").value;
-    window.location.href = `/cards/card-scroll/search?searchTerm=${encodeURIComponent(searchTerm)}`;
-  });
-</script>
-
 <section id="cards-scroller">
-
   <section id="card-display">
     {{#each questions}}
     <div class="card">
       <div class="card-head">
-        <p id="{{correct_option_id}}">Question {{question_id}}</p>
+        <p id="{{correct_option_id}}">Question</p>
       </div>
-
       <div class="card-question">
         <fieldset>
-          <script>{ { question_id } }</script>
+          <p style="display: none;">{{question_id}}</p>
           <legend><strong>{{question}}</strong></legend>
           {{#each options}}
           <input type="radio" id="{{this}}" name="answer_option" value="{{this}}">
@@ -40,12 +22,9 @@
           {{/each}}
         </fieldset>
       </div>
-
       <div class="card-solution">
-        {{!-- script inserts dynamic html based on response to check on selected option when option element select event
-        is fired --}}
+        {{!-- script inserts corret or not correct in response to user option selection --}}
       </div>
-
       <div class="card-detail-help">
         <ul>
           <li><a href="{{documentation_link}}">Documentation</a>
@@ -55,7 +34,4 @@
       </div>
     </div>
     {{/each}}
-  </section>
-
-  <section id="filter">
   </section>

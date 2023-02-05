@@ -495,7 +495,82 @@ fieldset > legend {
   color: red;
 }
 
+/**************************************************************************
+ *
+ *      OpenAPI 
+ *
+ **********/
 
+.smartdog-container {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas: 
+  "prompt"
+  "ask"
+  "completion";
+}
+
+.prompt {
+  grid-area: "prompt";
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  margin: 20px;
+}
+
+.ask{
+  grid-area: "ask";
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  margin: 20px;
+}
+
+.completion-container {
+  grid-area: "completion";
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  margin: 20px;
+}
+
+#prompt-input {
+  margin-top: 10vh;
+  padding: 10px;
+  width: 80vw;
+}
+
+/* ask  */
+#prompt-button {
+  padding: 10px;
+  width: 20vw;
+  border-radius: 20px;
+}
+
+.completion-text {
+  font-size: 20px;
+  font-weight: bold;
+  background-color: rgba(179, 185, 190,1);
+  border-radius: 20px;
+  padding: 5px;
+  width: 82vw;
+  height: 100vh;
+}
+
+.completion-text > p {
+  font-size: 14px;
+  color: orangered;
+}
 
 /**************************************************************************
  *

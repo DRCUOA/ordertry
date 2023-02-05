@@ -1,5 +1,3 @@
-const express = require('express');
-const router = express.Router();
 const debug = require('debug');
 
 // debug namespaces
@@ -35,7 +33,6 @@ async function verifyAuthenticated(req,res,next) {
     res.render("index", {pageTitle: "Welcome"});
   }
 };
-
 
 module.exports = {
   addUserToLocals,

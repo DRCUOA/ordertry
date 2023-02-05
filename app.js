@@ -11,6 +11,8 @@ const express = require('express');
 const app = express();
 const cors = require("cors");
 const multer = require("multer");
+const axios = require("axios");
+require("dotenv").config();
 const port = process.env.PORT || 1234;
 
 // enable dev dependecies for HTTP loggin and debug logs
@@ -77,6 +79,9 @@ app.use('/validation', clientInputValidation);
 
 const cards = require('./routes/cards');
 app.use('/cards', cards);
+
+const api = require('./routes/apiRoutes');
+app.use('/api', api);
 
 // start the server runnign:
 app.listen(port, () => {

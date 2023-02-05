@@ -1,4 +1,6 @@
-
+/*
+*  Client-side Javascript
+*/
 
 // regisitration and login helpers:
 if (document.getElementById('register-button') || document.getElementById('sign-in-button')) {
@@ -39,7 +41,6 @@ if (document.getElementById('register-button') || document.getElementById('sign-
   let footer = document.querySelector('#footer');
   footer.style.display = "None";
 
-
 } else if (document.getElementById('chart')) {
   async function fetchData() {
     // Fetch data from endpoint
@@ -49,88 +50,6 @@ if (document.getElementById('register-button') || document.getElementById('sign-
   }
   fetchData();
 }
-
-if (document.getElementById('weightloss')) {
-  const startDate = new Date(2023, 0, 18); // January 18, 2023 (month index starts at 0)
-  let weight = 135;
-
-  const weeklyTargets = [];
-
-  const date = new Date(startDate);
-  while (weight > 79.9) {
-    date.setDate(date.getDate() + 7);
-    weeklyTargets.push({
-      date: date.toDateString(),
-      targetWeight: weight -= 1.5
-    });
-  }
-
-  const output = document.getElementById("output");
-  const modal = document.getElementById("modal-card");
-  const closeButton = document.querySelector(".close-button");
-  const dateLabel = document.getElementById("date-label");
-  const actualWeightInput = document.getElementById("actualWeight");
-  const metSelect = document.getElementById("met");
-  const notesTextarea = document.getElementById("notes");
-  const saveButton = document.getElementById("save-button");
-
-  weeklyTargets.forEach(target => {
-    let row = document.createElement("tr");
-    let dateCell = document.createElement("td");
-    let targetWeightCell = document.createElement("td");
-    let actualWeightCell = document.createElement("td");
-    let metCell = document.createElement("td");
-    let notesCell = document.createElement("td");
-
-    dateCell.textContent = target.date;
-    targetWeightCell.textContent = target.targetWeight;
-
-    // Add input fields to the cells for actual weight and notes
-    actualWeightCell.innerHTML = `<input type="number" name="actualWeight" id="actualWeight-${target.date}">`;
-    notesCell.innerHTML = `<textarea name="notes" id="notes-${target.date}"></textarea>`;
-
-    // Add acalculated boolean to the met cell
-    metCell.textContent = target.actualWeight <= target.targetWeight ? "Met" : "Not Met";
-
-    // Add click event listener to the date cell
-    dateCell.addEventListener("click", event => {
-      modal.style.display = "block";
-      dateLabel.textContent = target.date;
-      actualWeightInput.value = target.actualWeight;
-      metSelect.value = metCell.textContent;
-      notesTextarea.value = target.notes;
-    });
-
-    row.appendChild(dateCell);
-    row.appendChild(targetWeightCell);
-    row.appendChild(actualWeightCell);
-    row.appendChild(metCell);
-    row.appendChild(notesCell);
-
-    output.appendChild(row);
-  });
-
-  // Close button for the modal
-  closeButton.addEventListener("click", event => {
-    modal.style.display = "none";
-  });
-
-  // Save button for the modal
-  saveButton.addEventListener("click", event => {
-    target.actualWeight = actualWeightInput.value;
-    target.notes = notesTextarea.value;
-    target.met = metSelect.value;
-    modal.style.display = "none";
-  });
-
-  // Close modal when click outside of the modal
-  window.addEventListener("click", event => {
-    if (event.target === modal) {
-      modal.style.display = "none";
-    }
-  });
-}
-
 
 if (document.getElementById('advice4Today')) {
   window.onload = () => {
@@ -202,7 +121,7 @@ async function getAdvice() {
   document.getElementById('advice4Today').innerHTML = data.slip.advice;
 }
 
-// hamburger and nav toggle
+// hamburger, nav toggle and card search
 if (document.getElementById('nav') || document.getElementById('hamburger')) {
 
   const nav = document.getElementById("nav");
@@ -224,4 +143,13 @@ if (document.getElementById('nav') || document.getElementById('hamburger')) {
       hamburgerMenu.classList.add("open");
     }
   };
-};
+
+  // enable search of question cards
+  if (document.getElementById("search-form")) {
+    document.getElementById("search-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+      const searchTerm = document.getElementById("search-input").value;
+      window.location.href = `/cards/card-scroll/search?searchTerm=${encodeURIComponent(searchTerm)}`;
+    });
+  };
+}

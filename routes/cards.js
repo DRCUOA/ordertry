@@ -14,7 +14,6 @@ const cardDao = require('../models/cards');
 router.get("/card-scroll",  async function (req, res) {
   // make a call to dao to retreive cards
   const data = await cardDao.getAllCards();
-  // devCardRLog(data.questions[0].options);
   res.render('cards-scroller', data);
 });
 
@@ -33,7 +32,6 @@ router.get("/card-scroll/search", async function (req, res) {
   res.render('cards-scroller',filteredData);
 });
   
-
 router.get("/answer", async (req, res) => {
   const isAnswerOption = await cardDao.isAnswerOption(req.query.selected);
   devCardRLog(isAnswerOption);
@@ -42,5 +40,10 @@ router.get("/answer", async (req, res) => {
   } else
   res.send(false);
 })
+
+//question admin routes:
+router.get("/questions", verifyAuthenticated, async function (req, res) {
+  
+});
 
 module.exports = router;
