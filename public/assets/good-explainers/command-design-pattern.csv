@@ -1,0 +1,10 @@
+Date,Note,Mood
+2023-02-05,The Command design pattern is a way to separate the responsibility of requesting an action (invoking the operation) from the object that knows how to perform that action. This separation is achieved through the use of an abstract base class that maps a receiver (an object) with an action (a pointer to a member function). The base class has an "execute" method that simply calls the action on the receiver.
+
+Clients of the Command object only interact with it through the execute method, without having to know the details of how the action is performed.
+
+A Command object contains information about the object, the method to be applied to the object, and the arguments for the method. When the execute method is called, all the pieces come together and the action is performed.
+
+Multiple Command objects can be combined into a single, more complex Command, known as a composite or macro command.
+
+A practical example of this design pattern is in a remote control system. The buttons on the remote are like Command objects, and the objects they control (television, DVD player, etc.) are the receivers. When you press a button on the remote, it sends a command to the receiver, telling it to perform a specific action. The remote control doesn't need to know how the action is performed, it just sends the command.,1
