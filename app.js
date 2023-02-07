@@ -13,7 +13,7 @@ const cors = require("cors");
 const multer = require("multer");
 const axios = require("axios");
 require("dotenv").config();
-const port = process.env.PORT || 1234;
+const port = process.env.PORT || 5050;
 
 // enable dev dependecies for HTTP loggin and debug logs
 const morgan = require('morgan');
