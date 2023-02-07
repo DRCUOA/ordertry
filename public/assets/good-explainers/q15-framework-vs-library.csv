@@ -1,0 +1,2 @@
+Date,Note,Mood
+2023-02-06,The main distinction between a framework and a library is that a framework inverts program control. It informs the developer of what they require. A library, however, does not. Instead, a programmer calls the library when and where he needs it.,1

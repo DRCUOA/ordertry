@@ -3,18 +3,34 @@
   
   <div class="prompt">
     <form id="prompt-form" action="">
-      <input type="text" id="prompt-input" name="prompt-input" placeholder="Enter prompt...">
+      <input type="text" id="prompt-input" name="prompt-input" placeholder="Enter prompt..." autocomplete="off">
   </div>
   
   <div class="ask">
-    <button type="submit" id="prompt-button">Ask SmartDog</button>
+    {{!-- <button type="submit" id="prompt-button">Ask SmartDog</button> --}}
     </form>
   </div>
   
-  <div class="completion-container">
-    <div class="completion-text">
-      <p>SmartDog says:</p> {{result}}
-    </div>
+ <div class="completion-container">
+  <div class="completion-text">
+    <p>SmartDog says:</p> <span id="typing-text"></span>
   </div>
+  <p id="result" style="display: none;">{{result}}</p>
+</div>
+
+<script>
+  var result = document.querySelector('#result').innerText ;
+  var i = 0;
+  var speed = 30;
+  function typeWriter() {
+    if (i < result.length) {
+      document.getElementById("typing-text").innerHTML += result.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+  typeWriter();
+</script>
+
   
 </div>
