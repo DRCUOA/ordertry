@@ -35,8 +35,7 @@ async function completion (req, res) {
         "Authorization": `Bearer ${openaiApiKey}`
       },
       data: JSON.stringify({
-        prompt: prompt,
-        max_tokens: 1900,
+          max_tokens: 1900,
         temperature: 1,
       })
     });
